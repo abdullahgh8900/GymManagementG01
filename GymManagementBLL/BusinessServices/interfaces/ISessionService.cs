@@ -1,4 +1,5 @@
 ﻿using GymManagementBLL.View_Models.Session_VM;
+using GymManagementBLL.ViewModels.SessionViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,5 +21,9 @@ namespace GymManagementBLL.BusinessServices.interfaces
         bool UpdateSession(int sessionId, UpdateSessionViewModel updateSession);
 
         bool DeleteSession(int sessionId);
+
+        IEnumerable<TrainerSelectViewModel> GetTrainersForDropDown();
+        IEnumerable<CategorySelectViewModel> GetCategoriesForDropDown();
+
     }
 }

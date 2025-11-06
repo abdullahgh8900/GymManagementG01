@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GymManagementBLL.BusinessServices.interfaces;
 using GymManagementBLL.View_Models.Session_VM;
+using GymManagementBLL.ViewModels.SessionViewModels;
 using GymManagementDAL.Entities;
 using GymManagementDAL.UnitOfWork;
 using System;
@@ -168,6 +169,17 @@ namespace GymManagementBLL.BusinessServices.implementaion
             }
         }
 
+        public IEnumerable<TrainerSelectViewModel> GetTrainersForDropDown()
+        {
+            var trainers = _unitOfWork.GetRepository<Trainer>().GetAll();
+            return _mapper.Map<IEnumerable<TrainerSelectViewModel>>(trainers);
+        }
+        public IEnumerable<CategorySelectViewModel> GetCategoriesForDropDown()
+        {
+
+            var categories = _unitOfWork.GetRepository<Category>().GetAll();
+            return _mapper.Map<IEnumerable<CategorySelectViewModel>>(categories);
+        }
 
 
 
