@@ -1,5 +1,4 @@
-﻿using GymManagementDAL.Entities.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,14 +7,10 @@ using System.Threading.Tasks;
 
 namespace GymManagementBLL.View_Models
 {
-    class CreateMemberViewModel
+    public class MemberToUpdateViewModel
     {
-        [Required(ErrorMessage = "Name is Required")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "Name must be between 2 and 50")]
-        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Name must contain letters and spaces only")]
-        public string Name { get; set; } = null!;
-
-
+        public string ? Name { get; set; }
+        public string ? Photo { get; set; }
         [Required(ErrorMessage = "Email is Required")]
         [EmailAddress(ErrorMessage = "Invalid Email Format")]
         [DataType(DataType.EmailAddress)] // UI Hint
@@ -25,20 +20,11 @@ namespace GymManagementBLL.View_Models
         [Required(ErrorMessage = "Phone is Required")]
         [Phone(ErrorMessage = "Invalid Phone Format")]
         [RegularExpression(@"^(010|011|012|015)\d{8}$", ErrorMessage = "Phone must Egyption format")]
-        public string Phone { get; set; } = null!;
+        public string  Phone { get; set; } = null!;
 
-        [Required(ErrorMessage = "DateOfBirth is Required")]
-        [DataType(DataType.Date)]
-        public DateOnly DateOfBirth { get; set; }
-
-        [Required(ErrorMessage = "Gender is Required")]
-        public Gender Gender { get; set; }
-
-        [Required(ErrorMessage = "BuildingNumber is Required")]
-        [Range(1,9000,ErrorMessage = "BuildingNumber between 1 and 9000")]
         public int BuildingNumber { get; set; }
         [Required(ErrorMessage = "City is Required")]
-        [StringLength(30,MinimumLength =2,ErrorMessage = "City between 2 and 30")]
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "City between 2 and 30")]
         [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "City must contain letters and spaces only")]
 
         public string City { get; set; } = null!;
@@ -48,7 +34,5 @@ namespace GymManagementBLL.View_Models
 
         public string Street { get; set; } = null!;
 
-        [Required(ErrorMessage = "Health Record is Required")]
-        public HealthRecordViewModel HealthRecord{ get; set; } = null!;
     }
 }
