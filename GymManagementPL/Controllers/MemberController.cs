@@ -1,11 +1,13 @@
 ﻿using GymManagementBLL.BusinessServices.interfaces;
 using GymManagementBLL.Services.Interfaces;
 using GymManagementBLL.View_Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace GymManagementPL.Controllers
 {
+    [Authorize(Roles = "SuperAdmin")]
     public class MemberController : Controller
     {
 
