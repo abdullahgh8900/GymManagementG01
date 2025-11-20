@@ -10,7 +10,7 @@ namespace GymManagementDAL.Entities
     {
         //joinDate = CreatedAt
 
-        public string ? Photo { get; set; }
+        public string Photo { get; set; } = null!;
 
         #region Relationships
 
