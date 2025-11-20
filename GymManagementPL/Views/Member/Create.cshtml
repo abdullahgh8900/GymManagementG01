@@ -7,7 +7,7 @@
 @Html.ValidationMessage("DataMissed", new { @class = "text-danger" })
 
 
-<form method="post" asp-action="CreateMember">
+<form method="post" asp-action="CreateMember" enctype="multipart/form-data">
 
     <!-- Step navigation -->
     <ul class="nav nav-tabs mb-4" id="addMemberTabs" role="tablist">
@@ -162,4 +162,20 @@
         <partial name="_ValidationScriptsPartial" />
         // Server Side Validations
     }
+
+    <script>
+        // Preview photo before upload
+        document.getElementById('photoInput').addEventListener('change', function(e) {
+            var file = e.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var preview = document.getElementById('photoPreview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 }
