@@ -1,13 +1,16 @@
 using GymManagementBLL.BusinessServices.implementaion;
 using GymManagementBLL.BusinessServices.interfaces;
 using GymManagementBLL.Mapping;
+using GymManagementBLL.Services.AttachmentService;
 using GymManagementBLL.Services.Classes;
 using GymManagementBLL.Services.Interfaces;
 using GymManagementDAL.Data.Contexts;
 using GymManagementDAL.Data.SeedData;
+using GymManagementDAL.Entities;
 using GymManagementDAL.Repositories.Implementaion;
 using GymManagementDAL.Repositories.Interfaces;
 using GymManagementDAL.UnitOfWork;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace GymManagementPL
@@ -39,7 +42,13 @@ namespace GymManagementPL
             builder.Services.AddScoped<ITrainerService, TrainerService>();
             builder.Services.AddScoped<IPlanService, PlanService>();
             builder.Services.AddScoped<ISessionService, SessionService>();
+            builder.Services.AddScoped<IAttachmentService, AttachmentService>();
             builder.Services.AddAutoMapper(X => X.AddProfile(new MappingProfile()));
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(Config =>
+            {
+                Config.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<GymDbContext>()
+              .AddDefaultTokenProviders(); 
 
             #endregion
 
