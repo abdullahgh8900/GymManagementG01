@@ -1,5 +1,5 @@
 ﻿using GymManagementBLL.Services.Interfaces;
-using GymManagementBLL.ViewModels.AccountViewModels;
+using GymManagementBLL.ViewModels.AccountVM;
 using GymManagementDAL.Entities;
 using Microsoft.AspNetCore.Identity;
 using System;
