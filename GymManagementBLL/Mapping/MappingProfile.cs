@@ -3,6 +3,7 @@ using GymManagementBLL.View_Models;
 using GymManagementBLL.View_Models.Plan_VM;
 using GymManagementBLL.View_Models.Session_VM;
 using GymManagementBLL.View_Models.Trainer_VM;
+using GymManagementBLL.ViewModels.SessionViewModels;
 using GymManagementDAL.Entities;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,8 @@ namespace GymManagementBLL.Mapping
 
             CreateMap<CreateSessionViewModel, Session>();
             CreateMap<Session, UpdateSessionViewModel>().ReverseMap();
+            CreateMap<Category, CategorySelectViewModel>()
+                    .ForMember(dist => dist.Name, opt => opt.MapFrom(src => src.CategoryName));
             #endregion
 
             #region member
@@ -78,6 +81,8 @@ namespace GymManagementBLL.Mapping
                 .ForMember(dest => dest.BuildingNumber, opt => opt.MapFrom(src => src.Address.BuildingNumber))
                 .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Address.Street))
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Address.City));
+
+            CreateMap<Trainer, TrainerSelectViewModel>();
 
             #endregion
 
